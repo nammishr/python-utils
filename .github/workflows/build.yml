@@ -23,7 +23,7 @@ jobs:
     - name: Configure AWS credentials (OIDC)
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::977016738307:role/GithubAWSRole
+        role-to-assume: arn:aws:iam::977016738307:role/GithubActionsS3Role
         aws-region: us-east-1
 
     - name: Set up Python
@@ -35,7 +35,7 @@ jobs:
       run: pip install boto3 psycopg2-binary
 
     - name: Run audit backup script
-      run: python AuditDBTablesBackup.py
+      run: python AuditBackup.py
       env:
 #        DB_HOST: ${{ secrets.DB_HOST }}
 #        DB_PORT: ${{ secrets.DB_PORT }}
